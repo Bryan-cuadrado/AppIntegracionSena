@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppIntegracionSena - Portal de Producción</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; line-height: 1.6; }
+        header { background-color: #1b5e20; color: white; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .container { max-width: 960px; margin: 2.5rem auto; padding: 0 1.5rem; }
+        .hero { background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+        .hero h1 { color: #1b5e20; margin-bottom: 0.8rem; font-size: 1.9rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-top: 4px solid #1b5e20; }
+        .card h3 { margin-bottom: 0.5rem; color: #1e293b; }
+        .btn { display: inline-block; background: #1b5e20; color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 4px; margin-top: 1rem; font-weight: 600; }
+        footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>AppIntegracionSena</h2>
+        <span>Entorno de Producción v1.0</span>
+    </header>
+    <div class="container">
+        <section class="hero">
+            <h1>Sistema Integrador Orientado a Servicios</h1>
+            <p>Plataforma en producción para la gestión de usuarios mediante servicios RESTful (Jakarta Servlet) y aplicación móvil Android nativa.</p>
+            <a href="https://github.com/Bryan-cuadrado/AppIntegracionSena" class="btn">Ver Repositorio Oficial</a>
+        </section>
+        <section class="grid">
+            <div class="card">
+                <h3>Módulo Móvil Android</h3>
+                <p>Interfaz móvil validada con pruebas unitarias JUnit 4 para registro, consulta y eliminación de usuarios por ID.</p>
+            </div>
+            <div class="card">
+                <h3>API de Servicios Web</h3>
+                <p>Endpoints HTTP configurados para procesar peticiones GET, POST y DELETE en formato JSON.</p>
+            </div>
+            <div class="card">
+                <h3>Base de Datos</h3>
+                <p>Estructura relacional MySQL aprovisionada para garantizar la persistencia y trazabilidad de registros.</p>
+            </div>
+        </section>
+    </div>
+    <footer>
+        Desarrollado por Bryan De Jesús Cuadrado Pérez - ADSO SENA (Evidencia GA10-220501097-AA6-EV01)
+    </footer>
+</body>
+</html>
