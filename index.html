@@ -18,34 +18,199 @@
         footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
     </style>
 </head>
+<body><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppIntegracionSena - Sistema de Gestión de Usuarios</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f1f5f9; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: #1b5e20; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+        .logo-area h1 { font-size: 1.35rem; font-weight: 700; }
+        .logo-area span { font-size: 0.8rem; color: #a7f3d0; }
+        .user-badge { background: rgba(255,255,255,0.15); padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.85rem; }
+        .main-layout { display: flex; flex: 1; max-width: 1200px; width: 100%; margin: 1.5rem auto; gap: 1.5rem; padding: 0 1.2rem; }
+        aside { width: 230px; background: white; border-radius: 8px; padding: 1.2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); height: fit-content; }
+        aside h3 { font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin-bottom: 0.8rem; letter-spacing: 0.5px; }
+        .nav-item { display: block; padding: 0.65rem 0.9rem; border-radius: 6px; color: #334155; text-decoration: none; font-size: 0.92rem; margin-bottom: 0.4rem; font-weight: 500; cursor: pointer; }
+        .nav-item.active { background: #e8f5e9; color: #1b5e20; font-weight: 700; border-left: 4px solid #1b5e20; }
+        .nav-item:hover:not(.active) { background: #f8fafc; }
+        main { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
+        .card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .card h2 { font-size: 1.15rem; color: #1b5e20; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; color: #334155; }
+        .form-group input, .form-group select { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem; }
+        .btn { padding: 0.65rem 1.2rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem; color: white; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.92; }
+        .btn-green { background-color: #1b5e20; }
+        .btn-red { background-color: #b91c1c; }
+        .alert { padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; display: none; }
+        .alert-success { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+        .alert-error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.9rem; }
+        th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #e2e8f0; }
+        th { background-color: #f8fafc; color: #475569; font-weight: 700; }
+        .badge-role { padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+        .role-admin { background: #dbeafe; color: #1e40af; }
+        .role-op { background: #fef3c7; color: #92400e; }
+        .role-user { background: #f1f5f9; color: #475569; }
+        footer { text-align: center; padding: 1.2rem; color: #64748b; font-size: 0.85rem; background: white; border-top: 1px solid #e2e8f0; margin-top: auto; }
+    </style>
+</head>
 <body>
     <header>
-        <h2>AppIntegracionSena</h2>
-        <span>Entorno de Producción v1.0</span>
+        <div class="logo-area">
+            <h1>AppIntegracionSena</h1>
+            <span>Sistema Orientado a Servicios | Gestión de Usuarios</span>
+        </div>
+        <div class="user-badge">👤 Rol activo: <strong>Administrador (Bryan Cuadrado)</strong></div>
     </header>
-    <div class="container">
-        <section class="hero">
-            <h1>Sistema Integrador Orientado a Servicios</h1>
-            <p>Plataforma en producción para la gestión de usuarios mediante servicios RESTful (Jakarta Servlet) y aplicación móvil Android nativa.</p>
-            <a href="https://github.com/Bryan-cuadrado/AppIntegracionSena" class="btn">Ver Repositorio Oficial</a>
-        </section>
-        <section class="grid">
-            <div class="card">
-                <h3>Módulo Móvil Android</h3>
-                <p>Interfaz móvil validada con pruebas unitarias JUnit 4 para registro, consulta y eliminación de usuarios por ID.</p>
-            </div>
-            <div class="card">
-                <h3>API de Servicios Web</h3>
-                <p>Endpoints HTTP configurados para procesar peticiones GET, POST y DELETE en formato JSON.</p>
-            </div>
-            <div class="card">
-                <h3>Base de Datos</h3>
-                <p>Estructura relacional MySQL aprovisionada para garantizar la persistencia y trazabilidad de registros.</p>
-            </div>
-        </section>
+
+    <div class="main-layout">
+        <aside>
+            <h3>Menú de Navegación</h3>
+            <a class="nav-item active" onclick="mostrarSeccion('gestion')">📋 Gestión de Usuarios</a>
+            <a class="nav-item" onclick="mostrarSeccion('ayuda')">📘 Ayuda / Manual Rápido</a>
+            <a class="nav-item" href="https://github.com/Bryan-cuadrado/AppIntegracionSena" target="_blank">🔗 Repositorio GitHub</a>
+        </aside>
+
+        <main>
+            <div id="alertaSistema" class="alert"></div>
+
+            <!-- Formulario de Registro -->
+            <section class="card">
+                <h2>1. Registrar Nuevo Usuario</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="inputNombre">Nombre completo *</label>
+                        <input type="text" id="inputNombre" placeholder="Ej: Carlos Perez">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Correo electrónico *</label>
+                        <input type="email" id="inputEmail" placeholder="Ej: carlos@sena.edu.co">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputRol">Rol de usuario</label>
+                        <select id="inputRol">
+                            <option value="ADMIN">ADMIN (Control Total)</option>
+                            <option value="OPERADOR">OPERADOR (Registro)</option>
+                            <option value="USER">USER (Consulta)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button class="btn btn-green" onclick="registrarUsuario()">+ Registrar Usuario</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Panel de Eliminación por ID -->
+            <section class="card">
+                <h2>2. Depuración y Eliminación por ID</h2>
+                <div class="form-grid" style="grid-template-columns: 240px auto;">
+                    <div class="form-group">
+                        <label for="inputIdEliminar">ID del usuario a eliminar *</label>
+                        <input type="number" id="inputIdEliminar" placeholder="Ej: 2" min="1">
+                    </div>
+                    <div>
+                        <button class="btn btn-red" onclick="eliminarPorId()">🗑 Eliminar por ID</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabla de Consulta en Tiempo Real -->
+            <section class="card">
+                <h2>3. Directorio de Usuarios Registrados (Base de Datos Activa)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre Completo</th>
+                            <th>Correo Electrónico</th>
+                            <th>Rol Asignado</th>
+                            <th>Acción Rápida</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUsuarios"></tbody>
+                </table>
+            </section>
+        </main>
     </div>
+
     <footer>
-        Desarrollado por Bryan De Jesús Cuadrado Pérez - ADSO SENA (Evidencia GA10-220501097-AA6-EV01)
+        AppIntegracionSena v1.0 — Desarrollado por Bryan De Jesús Cuadrado Pérez | Tecnólogo ADSO - SENA (2026)
     </footer>
+
+    <script>
+        let usuarios = [
+            { id: 1, nombre: "Bryan De Jesús Cuadrado Pérez", email: "bryan@sena.edu.co", rol: "ADMIN" },
+            { id: 2, nombre: "María Fernanda Gómez", email: "maria.gomez@sena.edu.co", rol: "OPERADOR" },
+            { id: 3, nombre: "Andrés Felipe Ríos", email: "andres.rios@sena.edu.co", rol: "USER" }
+        ];
+        let siguienteId = 4;
+
+        function renderizarTabla() {
+            const tbody = document.getElementById("tablaUsuarios");
+            tbody.innerHTML = "";
+            usuarios.forEach(u => {
+                const badgeClass = u.rol === "ADMIN" ? "role-admin" : (u.rol === "OPERADOR" ? "role-op" : "role-user");
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>#${u.id}</strong></td>
+                        <td>${u.nombre}</td>
+                        <td>${u.email}</td>
+                        <td><span class="badge-role ${badgeClass}">${u.rol}</span></td>
+                        <td><button class="btn btn-red" style="padding:0.3rem 0.6rem;font-size:0.78rem;" onclick="borrarDirecto(${u.id})">Eliminar</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function mostrarAlerta(mensaje, tipo) {
+            const alerta = document.getElementById("alertaSistema");
+            alerta.textContent = mensaje;
+            alerta.className = "alert " + (tipo === "ok" ? "alert-success" : "alert-error");
+            alerta.style.display = "block";
+            setTimeout(() => { alerta.style.display = "none"; }, 4000);
+        }
+
+        function registrarUsuario() {
+            const nombre = document.getElementById("inputNombre").value.trim();
+            const email = document.getElementById("inputEmail").value.trim();
+            const rol = document.getElementById("inputRol").value;
+
+            if (!nombre || !email || !email.includes("@")) {
+                mostrarAlerta("⚠ Error: Por favor complete todos los campos obligatorios con un correo válido.", "error");
+                return;
+            }
+            usuarios.push({ id: siguienteId++, nombre, email, rol });
+            document.getElementById("inputNombre").value = "";
+            document.getElementById("inputEmail").value = "";
+            renderizarTabla();
+            mostrarAlerta("✓ Éxito: Usuario registrado correctamente en el sistema.", "ok");
+        }
+
+        function eliminarPorId() {
+            const idBuscado = parseInt(document.getElementById("inputIdEliminar").value);
+            const indice = usuarios.findIndex(u => u.id === idBuscado);
+            if (indice === -1) {
+                mostrarAlerta("✖ Error: El ID ingresado no existe en la base de datos.", "error");
+                return;
+            }
+            usuarios.splice(indice, 1);
+            document.getElementById("inputIdEliminar").value = "";
+            renderizarTabla();
+            mostrarAlerta("✓ Éxito: Usuario con ID #" + idBuscado + " eliminado correctamente.", "ok");
+        }
+
+        function borrarDirecto(id) {
+            document.getElementById("inputIdEliminar").value = id;
+            eliminarPorId();
+        }
+
+        renderizarTabla();
+    </script>
 </body>
 </html>
