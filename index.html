@@ -1,216 +1,333 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppIntegracionSena - Portal de Producción</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f6f9; color: #333; line-height: 1.6; }
-        header { background-color: #1b5e20; color: white; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .container { max-width: 960px; margin: 2.5rem auto; padding: 0 1.5rem; }
-        .hero { background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 2rem; }
-        .hero h1 { color: #1b5e20; margin-bottom: 0.8rem; font-size: 1.9rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border-top: 4px solid #1b5e20; }
-        .card h3 { margin-bottom: 0.5rem; color: #1e293b; }
-        .btn { display: inline-block; background: #1b5e20; color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 4px; margin-top: 1rem; font-weight: 600; }
-        footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
-    </style>
-</head>
-<body><!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppIntegracionSena - Sistema de Gestión de Usuarios</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f1f5f9; color: #1e293b; display: flex; flex-direction: column; min-height: 100vh; }
-        header { background-color: #1b5e20; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
-        .logo-area h1 { font-size: 1.35rem; font-weight: 700; }
-        .logo-area span { font-size: 0.8rem; color: #a7f3d0; }
-        .user-badge { background: rgba(255,255,255,0.15); padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.85rem; }
-        .main-layout { display: flex; flex: 1; max-width: 1200px; width: 100%; margin: 1.5rem auto; gap: 1.5rem; padding: 0 1.2rem; }
-        aside { width: 230px; background: white; border-radius: 8px; padding: 1.2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); height: fit-content; }
-        aside h3 { font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin-bottom: 0.8rem; letter-spacing: 0.5px; }
-        .nav-item { display: block; padding: 0.65rem 0.9rem; border-radius: 6px; color: #334155; text-decoration: none; font-size: 0.92rem; margin-bottom: 0.4rem; font-weight: 500; cursor: pointer; }
-        .nav-item.active { background: #e8f5e9; color: #1b5e20; font-weight: 700; border-left: 4px solid #1b5e20; }
-        .nav-item:hover:not(.active) { background: #f8fafc; }
-        main { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
-        .card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-        .card h2 { font-size: 1.15rem; color: #1b5e20; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; }
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end; }
-        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; color: #334155; }
-        .form-group input, .form-group select { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem; }
-        .btn { padding: 0.65rem 1.2rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem; color: white; transition: opacity 0.2s; }
-        .btn:hover { opacity: 0.92; }
-        .btn-green { background-color: #1b5e20; }
-        .btn-red { background-color: #b91c1c; }
-        .alert { padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; display: none; }
-        .alert-success { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
-        .alert-error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
-        table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.9rem; }
-        th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #e2e8f0; }
-        th { background-color: #f8fafc; color: #475569; font-weight: 700; }
-        .badge-role { padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
-        .role-admin { background: #dbeafe; color: #1e40af; }
-        .role-op { background: #fef3c7; color: #92400e; }
-        .role-user { background: #f1f5f9; color: #475569; }
-        footer { text-align: center; padding: 1.2rem; color: #64748b; font-size: 0.85rem; background: white; border-top: 1px solid #e2e8f0; margin-top: auto; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppIntegracionSena | Plataforma SOA y Gestión QA</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <header>
-        <div class="logo-area">
-            <h1>AppIntegracionSena</h1>
-            <span>Sistema Orientado a Servicios | Gestión de Usuarios</span>
+
+  <!-- PANTALLA DE LOGIN -->
+  <section id="login-screen" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-brand">
+        <span class="badge-sena">SENA • ADSO</span>
+        <h1>AppIntegracionSena</h1>
+        <p>Software Integrador de Tecnologías Orientadas a Servicios</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Correo Institucional o Administrativo</label>
+          <input type="email" id="login-email" value="admin@admin.com" placeholder="admin@admin.com" required />
         </div>
-        <div class="user-badge">👤 Rol activo: <strong>Administrador (Bryan Cuadrado)</strong></div>
-    </header>
-
-    <div class="main-layout">
-        <aside>
-            <h3>Menú de Navegación</h3>
-            <a class="nav-item active" onclick="mostrarSeccion('gestion')">📋 Gestión de Usuarios</a>
-            <a class="nav-item" onclick="mostrarSeccion('ayuda')">📘 Ayuda / Manual Rápido</a>
-            <a class="nav-item" href="https://github.com/Bryan-cuadrado/AppIntegracionSena" target="_blank">🔗 Repositorio GitHub</a>
-        </aside>
-
-        <main>
-            <div id="alertaSistema" class="alert"></div>
-
-            <!-- Formulario de Registro -->
-            <section class="card">
-                <h2>1. Registrar Nuevo Usuario</h2>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="inputNombre">Nombre completo *</label>
-                        <input type="text" id="inputNombre" placeholder="Ej: Carlos Perez">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail">Correo electrónico *</label>
-                        <input type="email" id="inputEmail" placeholder="Ej: carlos@sena.edu.co">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputRol">Rol de usuario</label>
-                        <select id="inputRol">
-                            <option value="ADMIN">ADMIN (Control Total)</option>
-                            <option value="OPERADOR">OPERADOR (Registro)</option>
-                            <option value="USER">USER (Consulta)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <button class="btn btn-green" onclick="registrarUsuario()">+ Registrar Usuario</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Panel de Eliminación por ID -->
-            <section class="card">
-                <h2>2. Depuración y Eliminación por ID</h2>
-                <div class="form-grid" style="grid-template-columns: 240px auto;">
-                    <div class="form-group">
-                        <label for="inputIdEliminar">ID del usuario a eliminar *</label>
-                        <input type="number" id="inputIdEliminar" placeholder="Ej: 2" min="1">
-                    </div>
-                    <div>
-                        <button class="btn btn-red" onclick="eliminarPorId()">🗑 Eliminar por ID</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tabla de Consulta en Tiempo Real -->
-            <section class="card">
-                <h2>3. Directorio de Usuarios Registrados (Base de Datos Activa)</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre Completo</th>
-                            <th>Correo Electrónico</th>
-                            <th>Rol Asignado</th>
-                            <th>Acción Rápida</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaUsuarios"></tbody>
-                </table>
-            </section>
-        </main>
+        <div class="form-group">
+          <label for="login-pass">Contraseña de Acceso</label>
+          <input type="password" id="login-pass" value="admin123" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión en el Portal</button>
+        <div id="login-alert" class="alert hidden"></div>
+      </form>
+      <div class="login-footer">
+        <small>Credenciales demo: <strong>admin@admin.com</strong> / <strong>admin123</strong></small><br />
+        <small>Autor: Bryan De Jesús Cuadrado Pérez</small>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        AppIntegracionSena v1.0 — Desarrollado por Bryan De Jesús Cuadrado Pérez | Tecnólogo ADSO - SENA (2026)
-    </footer>
+  <!-- APLICACIÓN PRINCIPAL -->
+  <div id="app-shell" class="app-layout hidden">
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo-tag">SOA • REST</span>
+        <h2>AppIntegracionSena</h2>
+      </div>
 
-    <script>
-        let usuarios = [
-            { id: 1, nombre: "Bryan De Jesús Cuadrado Pérez", email: "bryan@sena.edu.co", rol: "ADMIN" },
-            { id: 2, nombre: "María Fernanda Gómez", email: "maria.gomez@sena.edu.co", rol: "OPERADOR" },
-            { id: 3, nombre: "Andrés Felipe Ríos", email: "andres.rios@sena.edu.co", rol: "USER" }
-        ];
-        let siguienteId = 4;
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="view-solicitudes">
+          📋 Gestión de Solicitudes
+        </button>
+        <button class="nav-item" data-view="view-apis">
+          🔗 Integración API Usuarios
+        </button>
+        <button class="nav-item" data-view="view-psp">
+          🛡️ Auditoría y Calidad PSP
+        </button>
+        <button class="nav-item" data-view="view-reportes">
+          📊 Reportes Operativos
+        </button>
+      </nav>
 
-        function renderizarTabla() {
-            const tbody = document.getElementById("tablaUsuarios");
-            tbody.innerHTML = "";
-            usuarios.forEach(u => {
-                const badgeClass = u.rol === "ADMIN" ? "role-admin" : (u.rol === "OPERADOR" ? "role-op" : "role-user");
-                tbody.innerHTML += `
-                    <tr>
-                        <td><strong>#${u.id}</strong></td>
-                        <td>${u.nombre}</td>
-                        <td>${u.email}</td>
-                        <td><span class="badge-role ${badgeClass}">${u.rol}</span></td>
-                        <td><button class="btn btn-red" style="padding:0.3rem 0.6rem;font-size:0.78rem;" onclick="borrarDirecto(${u.id})">Eliminar</button></td>
-                    </tr>
-                `;
-            });
-        }
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <strong id="active-user-name">Administrador</strong>
+          <span id="active-user-role">ROL: ADMIN</span>
+        </div>
+        <div class="author-info">
+          <small>Aprendiz ADSO:</small>
+          <strong>Bryan De Jesús Cuadrado</strong>
+        </div>
+        <button id="btn-logout" class="btn btn-outline-light btn-sm">Cerrar Sesión</button>
+      </div>
+    </aside>
 
-        function mostrarAlerta(mensaje, tipo) {
-            const alerta = document.getElementById("alertaSistema");
-            alerta.textContent = mensaje;
-            alerta.className = "alert " + (tipo === "ok" ? "alert-success" : "alert-error");
-            alerta.style.display = "block";
-            setTimeout(() => { alerta.style.display = "none"; }, 4000);
-        }
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Gestión y Agendamiento de Solicitudes</h1>
+          <p id="page-subtitle">Módulo operativo con validación en tiempo real y trazabilidad PSP</p>
+        </div>
+        <div class="api-status-pill" id="api-status-badge" title="Estado de conexión con UsuarioServlet (/api/usuarios)">
+          <span class="dot dot-warn"></span>
+          <span id="api-status-text">API Java: Modo Respaldo Local</span>
+        </div>
+      </header>
 
-        function registrarUsuario() {
-            const nombre = document.getElementById("inputNombre").value.trim();
-            const email = document.getElementById("inputEmail").value.trim();
-            const rol = document.getElementById("inputRol").value;
+      <!-- VISTA 1: GESTIÓN DE SOLICITUDES -->
+      <section id="view-solicitudes" class="view-section active">
+        <div class="kpi-grid">
+          <div class="kpi-card border-navy">
+            <span>TOTAL SOLICITUDES</span>
+            <strong id="kpi-total">0</strong>
+          </div>
+          <div class="kpi-card border-amber">
+            <span>EN ESTADO PENDIENTE</span>
+            <strong id="kpi-pendientes">0</strong>
+          </div>
+          <div class="kpi-card border-green">
+            <span>SOLICITUDES APROBADAS</span>
+            <strong id="kpi-aprobadas">0</strong>
+          </div>
+          <div class="kpi-card border-red">
+            <span>ALERTAS / BLOQUEOS</span>
+            <strong id="kpi-alertas">0</strong>
+          </div>
+        </div>
 
-            if (!nombre || !email || !email.includes("@")) {
-                mostrarAlerta("⚠ Error: Por favor complete todos los campos obligatorios con un correo válido.", "error");
-                return;
-            }
-            usuarios.push({ id: siguienteId++, nombre, email, rol });
-            document.getElementById("inputNombre").value = "";
-            document.getElementById("inputEmail").value = "";
-            renderizarTabla();
-            mostrarAlerta("✓ Éxito: Usuario registrado correctamente en el sistema.", "ok");
-        }
+        <div class="two-col-grid">
+          <div class="card">
+            <h3>Agendar Nueva Solicitud</h3>
+            <form id="form-solicitud">
+              <div class="form-group">
+                <label for="sol-cliente">Nombre del Cliente o Empresa</label>
+                <input type="text" id="sol-cliente" placeholder="Ej: Laura Gómez" />
+              </div>
+              <div class="form-group">
+                <label for="sol-servicio">Servicio Técnico Requerido</label>
+                <select id="sol-servicio">
+                  <option value="Integración Pasarela de Pagos">Integración Pasarela de Pagos</option>
+                  <option value="Sincronización API REST Usuarios">Sincronización API REST Usuarios</option>
+                  <option value="Auditoría de Seguridad Servlet">Auditoría de Seguridad Servlet</option>
+                  <option value="Despliegue Microservicio Móvil">Despliegue Microservicio Móvil</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sol-fecha">Fecha y Hora Programada</label>
+                <input type="datetime-local" id="sol-fecha" />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">+ Registrar Solicitud</button>
+              <div id="sol-feedback" class="alert hidden"></div>
+            </form>
+          </div>
 
-        function eliminarPorId() {
-            const idBuscado = parseInt(document.getElementById("inputIdEliminar").value);
-            const indice = usuarios.findIndex(u => u.id === idBuscado);
-            if (indice === -1) {
-                mostrarAlerta("✖ Error: El ID ingresado no existe en la base de datos.", "error");
-                return;
-            }
-            usuarios.splice(indice, 1);
-            document.getElementById("inputIdEliminar").value = "";
-            renderizarTabla();
-            mostrarAlerta("✓ Éxito: Usuario con ID #" + idBuscado + " eliminado correctamente.", "ok");
-        }
+          <div class="card">
+            <div class="card-header-row">
+              <h3>Bandeja de Solicitudes Registradas</h3>
+              <button id="btn-reset-demo" class="btn btn-ghost btn-sm" title="Restaurar datos iniciales">Restaurar Demo</button>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>CÓDIGO</th>
+                    <th>CLIENTE</th>
+                    <th>SERVICIO INTEGRADO</th>
+                    <th>FECHA AGENDADA</th>
+                    <th>ESTADO</th>
+                    <th>GESTIÓN</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-solicitudes"></tbody>
+              </table>
+            </div>
 
-        function borrarDirecto(id) {
-            document.getElementById("inputIdEliminar").value = id;
-            eliminarPorId();
-        }
+            <!-- CONSOLA BITÁCORA PSP -->
+            <div class="terminal-box">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="t-red"></span>
+                  <span class="t-yellow"></span>
+                  <span class="t-green"></span>
+                </div>
+                <span class="terminal-title">bitacora_auditoria_psp.log</span>
+              </div>
+              <div id="psp-log-console" class="terminal-body"></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        renderizarTabla();
-    </script>
+      <!-- VISTA 2: INTEGRACIÓN API USUARIOS (UsuarioServlet) -->
+      <section id="view-apis" class="view-section hidden">
+        <div class="card mb-20">
+          <div class="card-header-row">
+            <div>
+              <h3>Conexión REST con Backend Java (<code>UsuarioServlet.java</code>)</h3>
+              <p class="text-muted">Consumo directo de los métodos <code>GET</code>, <code>POST</code> y <code>DELETE</code> del endpoint <code>/api/usuarios</code></p>
+            </div>
+            <div class="endpoint-config">
+              <input type="text" id="api-base-url" value="http://localhost:8080/api-usuarios/api/usuarios" />
+              <button id="btn-sync-api" class="btn btn-navy btn-sm">Sincronizar GET</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col-grid">
+          <div class="card">
+            <h3>Registrar Usuario (<code>POST /api/usuarios</code>)</h3>
+            <form id="form-usuario-api">
+              <div class="form-group">
+                <label for="usr-nombre">Nombre Completo (<code>nombre</code>)</label>
+                <input type="text" id="usr-nombre" placeholder="Ej: Carlos Mendoza" required />
+              </div>
+              <div class="form-group">
+                <label for="usr-email">Correo Electrónico (<code>email</code>)</label>
+                <input type="email" id="usr-email" placeholder="carlos@sena.edu.co" required />
+              </div>
+              <div class="form-group">
+                <label for="usr-rol">Rol del Sistema (<code>rol</code>)</label>
+                <select id="usr-rol">
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="USER">USER</option>
+                  <option value="QA_ANALYST">QA_ANALYST</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Enviar Petición POST</button>
+              <div id="usr-feedback" class="alert hidden"></div>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Usuarios Registrados en <code>UsuarioDTO</code></h3>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>EMAIL</th>
+                    <th>ROL</th>
+                    <th>ACCIÓN (DELETE)</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-usuarios"></tbody>
+              </table>
+            </div>
+            <div class="json-preview-box">
+              <strong>Última respuesta JSON del servicio:</strong>
+              <pre id="json-response-viewer">[{"id": 1, "nombre": "Administrador", "email": "admin@admin.com", "rol": "ADMIN"}]</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISTA 3: AUDITORÍA Y CALIDAD PSP -->
+      <section id="view-psp" class="view-section hidden">
+        <div class="kpi-grid">
+          <div class="kpi-card border-green">
+            <span>CUMPLIMIENTO ISO/IEC 25010</span>
+            <strong>100%</strong>
+          </div>
+          <div class="kpi-card border-navy">
+            <span>DEFECTOS RESUELTOS (JIRA)</span>
+            <strong>2 / 2</strong>
+          </div>
+          <div class="kpi-card border-amber">
+            <span>COBERTURA CASOS PRUEBA</span>
+            <strong>5 / 5 PASS</strong>
+          </div>
+          <div class="kpi-card border-green">
+            <span>TIEMPO RESPUESTA UI</span>
+            <strong>&lt; 50 ms</strong>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Trazabilidad de Ajustes Técnicos y Calidad (GA11-220501098)</h3>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID INCIDENCIA</th>
+                  <th>TIPO</th>
+                  <th>DESCRIPCIÓN DEL HALLAZGO</th>
+                  <th>AJUSTE TÉCNICO APLICADO</th>
+                  <th>ESTADO JIRA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>CP-01</strong></td>
+                  <td>Caso Funcional</td>
+                  <td>Registro de solicitud válida con actualización de KPIs y log.</td>
+                  <td>Validación de flujo completo y persistencia local/API.</td>
+                  <td><span class="badge badge-approved">HECHO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>CP-02</strong></td>
+                  <td>Prueba Negativa</td>
+                  <td>Bloqueo de formulario con campos obligatorios vacíos.</td>
+                  <td>Validación preventiva antes de inserción y conteo de alertas.</td>
+                  <td><span class="badge badge-approved">HECHO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>BUG-01</strong></td>
+                  <td>Defecto (Alta)</td>
+                  <td>Duplicidad por diferencia entre mayúsculas y minúsculas.</td>
+                  <td>Normalización con <code>.trim().toLowerCase()</code>.</td>
+                  <td><span class="badge badge-approved">HECHO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>BUG-02</strong></td>
+                  <td>Defecto (Media)</td>
+                  <td>Bloqueo indebido al reagendar solicitudes rechazadas.</td>
+                  <td>Filtro lógico <code>estado !== "RECHAZADA"</code>.</td>
+                  <td><span class="badge badge-approved">HECHO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>CORS-01</strong></td>
+                  <td>Mejora API</td>
+                  <td>Bloqueo de peticiones cruzadas entre cliente web y Servlet.</td>
+                  <td>Cabeceras <code>Access-Control-Allow-Origin</code> y <code>doOptions</code>.</td>
+                  <td><span class="badge badge-approved">HECHO</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISTA 4: REPORTES OPERATIVOS -->
+      <section id="view-reportes" class="view-section hidden">
+        <div class="card">
+          <div class="card-header-row">
+            <div>
+              <h3>Consolidado Operativo del Sistema</h3>
+              <p class="text-muted">Exportación de datos para auditoría técnica y sustentación del proyecto formativo</p>
+            </div>
+            <div class="btn-group">
+              <button id="btn-export-json" class="btn btn-navy btn-sm">Descargar JSON</button>
+              <button id="btn-export-csv" class="btn btn-primary btn-sm">Exportar Excel (CSV)</button>
+            </div>
+          </div>
+          <div id="reporte-resumen-grid" class="report-summary-box"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
