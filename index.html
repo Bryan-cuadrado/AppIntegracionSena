@@ -3,119 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AppIntegracionSena | Plataforma SOA y Gestión QA</title>
+  <title>AppIntegracionSena | Gestión de Servicios</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-  <!-- PANTALLA DE LOGIN -->
+  <!-- PANTALLA DE ACCESO -->
   <section id="login-screen" class="login-wrapper">
     <div class="login-card">
       <div class="login-brand">
-        <span class="badge-sena">SENA • ADSO</span>
+        <span class="brand-kicker">SENA · ADSO</span>
         <h1>AppIntegracionSena</h1>
-        <p>Software Integrador de Tecnologías Orientadas a Servicios</p>
+        <p>Plataforma de gestión operativa e integración de servicios REST</p>
       </div>
-      <form id="login-form">
+
+      <form id="login-form" novalidate>
         <div class="form-group">
-          <label for="login-email">Correo Institucional o Administrativo</label>
+          <label for="login-email">Correo electrónico</label>
           <input type="email" id="login-email" value="admin@admin.com" placeholder="admin@admin.com" required />
         </div>
         <div class="form-group">
-          <label for="login-pass">Contraseña de Acceso</label>
-          <input type="password" id="login-pass" value="admin123" placeholder="••••••••" required />
+          <label for="login-pass">Contraseña</label>
+          <input type="password" id="login-pass" value="123456" placeholder="Ingresa tu contraseña" required />
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión en el Portal</button>
+        <button type="submit" id="btn-login-submit" class="btn btn-primary btn-block">Ingresar</button>
         <div id="login-alert" class="alert hidden"></div>
       </form>
+
       <div class="login-footer">
-        <small>Credenciales demo: <strong>admin@admin.com</strong> / <strong>admin123</strong></small><br />
-        <small>Autor: Bryan De Jesús Cuadrado Pérez</small>
+        <p>Acceso local: <code>admin@admin.com</code> / <code>123456</code></p>
+        <p class="author-credit">Bryan De Jesús Cuadrado Pérez</p>
       </div>
     </div>
   </section>
 
-  <!-- APLICACIÓN PRINCIPAL -->
+  <!-- INTERFAZ PRINCIPAL -->
   <div id="app-shell" class="app-layout hidden">
-    <!-- BARRA LATERAL -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <span class="logo-tag">SOA • REST</span>
+        <span class="logo-tag">SOA · REST</span>
         <h2>AppIntegracionSena</h2>
       </div>
 
-      <nav class="sidebar-nav">
+      <nav class="sidebar-nav" aria-label="Navegación principal">
         <button class="nav-item active" data-view="view-solicitudes">
-          📋 Gestión de Solicitudes
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+          <span>Solicitudes</span>
         </button>
         <button class="nav-item" data-view="view-apis">
-          🔗 Integración API Usuarios
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Usuarios API</span>
         </button>
         <button class="nav-item" data-view="view-psp">
-          🛡️ Auditoría y Calidad PSP
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Calidad y PSP</span>
         </button>
         <button class="nav-item" data-view="view-reportes">
-          📊 Reportes Operativos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+          <span>Reportes</span>
         </button>
       </nav>
 
       <div class="sidebar-footer">
         <div class="user-chip">
           <strong id="active-user-name">Administrador</strong>
-          <span id="active-user-role">ROL: ADMIN</span>
+          <span id="active-user-role">ADMIN</span>
         </div>
-        <div class="author-info">
-          <small>Aprendiz ADSO:</small>
-          <strong>Bryan De Jesús Cuadrado</strong>
-        </div>
-        <button id="btn-logout" class="btn btn-outline-light btn-sm">Cerrar Sesión</button>
+        <button id="btn-logout" class="btn btn-outline-light btn-sm btn-block">Cerrar sesión</button>
       </div>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
       <header class="topbar">
         <div>
-          <h1 id="page-title">Gestión y Agendamiento de Solicitudes</h1>
-          <p id="page-subtitle">Módulo operativo con validación en tiempo real y trazabilidad PSP</p>
+          <h1 id="page-title">Gestión de Solicitudes</h1>
+          <p id="page-subtitle">Registro, validación de duplicados y control de estados en MySQL</p>
         </div>
-        <div class="api-status-pill" id="api-status-badge" title="Estado de conexión con UsuarioServlet (/api/usuarios)">
+        <div class="api-status-pill" id="api-status-badge" title="Estado de conexión con Tomcat">
           <span class="dot dot-warn"></span>
-          <span id="api-status-text">API Java: Modo Respaldo Local</span>
+          <span id="api-status-text">Verificando conexión...</span>
         </div>
       </header>
 
-      <!-- VISTA 1: GESTIÓN DE SOLICITUDES -->
+      <!-- VISTA 1: SOLICITUDES -->
       <section id="view-solicitudes" class="view-section active">
         <div class="kpi-grid">
-          <div class="kpi-card border-navy">
-            <span>TOTAL SOLICITUDES</span>
-            <strong id="kpi-total">0</strong>
+          <div class="kpi-card">
+            <span class="kpi-label">Total solicitudes</span>
+            <strong class="kpi-value" id="kpi-total">0</strong>
           </div>
-          <div class="kpi-card border-amber">
-            <span>EN ESTADO PENDIENTE</span>
-            <strong id="kpi-pendientes">0</strong>
+          <div class="kpi-card">
+            <span class="kpi-label">Pendientes</span>
+            <strong class="kpi-value text-amber" id="kpi-pendientes">0</strong>
           </div>
-          <div class="kpi-card border-green">
-            <span>SOLICITUDES APROBADAS</span>
-            <strong id="kpi-aprobadas">0</strong>
+          <div class="kpi-card">
+            <span class="kpi-label">Aprobadas</span>
+            <strong class="kpi-value text-green" id="kpi-aprobadas">0</strong>
           </div>
-          <div class="kpi-card border-red">
-            <span>ALERTAS / BLOQUEOS</span>
-            <strong id="kpi-alertas">0</strong>
+          <div class="kpi-card">
+            <span class="kpi-label">Alertas de validación</span>
+            <strong class="kpi-value text-red" id="kpi-alertas">0</strong>
           </div>
         </div>
 
         <div class="two-col-grid">
           <div class="card">
-            <h3>Agendar Nueva Solicitud</h3>
-            <form id="form-solicitud">
+            <h3>Nueva solicitud</h3>
+            <form id="form-solicitud" novalidate>
               <div class="form-group">
-                <label for="sol-cliente">Nombre del Cliente o Empresa</label>
-                <input type="text" id="sol-cliente" placeholder="Ej: Laura Gómez" />
+                <label for="sol-cliente">Cliente o empresa</label>
+                <input type="text" id="sol-cliente" placeholder="Ej. Laura Gómez" />
               </div>
               <div class="form-group">
-                <label for="sol-servicio">Servicio Técnico Requerido</label>
+                <label for="sol-servicio">Servicio requerido</label>
                 <select id="sol-servicio">
                   <option value="Integración Pasarela de Pagos">Integración Pasarela de Pagos</option>
                   <option value="Sincronización API REST Usuarios">Sincronización API REST Usuarios</option>
@@ -124,184 +124,188 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="sol-fecha">Fecha y Hora Programada</label>
+                <label for="sol-fecha">Fecha y hora programada</label>
                 <input type="datetime-local" id="sol-fecha" />
               </div>
-              <button type="submit" class="btn btn-primary btn-block">+ Registrar Solicitud</button>
+              <button type="submit" class="btn btn-primary btn-block">Registrar solicitud</button>
               <div id="sol-feedback" class="alert hidden"></div>
             </form>
           </div>
 
           <div class="card">
             <div class="card-header-row">
-              <h3>Bandeja de Solicitudes Registradas</h3>
-              <button id="btn-reset-demo" class="btn btn-ghost btn-sm" title="Restaurar datos iniciales">Restaurar Demo</button>
+              <h3>Bandeja de solicitudes</h3>
+              <button id="btn-refresh-sol" class="btn btn-ghost btn-sm">Actualizar</button>
             </div>
+
             <div class="table-responsive">
               <table>
                 <thead>
                   <tr>
-                    <th>CÓDIGO</th>
-                    <th>CLIENTE</th>
-                    <th>SERVICIO INTEGRADO</th>
-                    <th>FECHA AGENDADA</th>
-                    <th>ESTADO</th>
-                    <th>GESTIÓN</th>
+                    <th>Código</th>
+                    <th>Cliente</th>
+                    <th>Servicio</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th class="text-right">Acciones</th>
                   </tr>
                 </thead>
                 <tbody id="tabla-solicitudes"></tbody>
               </table>
             </div>
 
-            <!-- CONSOLA BITÁCORA PSP -->
-            <div class="terminal-box">
-              <div class="terminal-header">
-                <div class="terminal-dots">
-                  <span class="t-red"></span>
-                  <span class="t-yellow"></span>
-                  <span class="t-green"></span>
-                </div>
-                <span class="terminal-title">bitacora_auditoria_psp.log</span>
+            <div class="log-panel">
+              <div class="log-header">
+                <span>Registro de actividad</span>
+                <span class="log-file">bitacora_psp.log</span>
               </div>
-              <div id="psp-log-console" class="terminal-body"></div>
+              <div id="psp-log-console" class="log-body"></div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- VISTA 2: INTEGRACIÓN API USUARIOS (UsuarioServlet) -->
+      <!-- VISTA 2: USUARIOS API -->
       <section id="view-apis" class="view-section hidden">
         <div class="card mb-20">
           <div class="card-header-row">
             <div>
-              <h3>Conexión REST con Backend Java (<code>UsuarioServlet.java</code>)</h3>
-              <p class="text-muted">Consumo directo de los métodos <code>GET</code>, <code>POST</code> y <code>DELETE</code> del endpoint <code>/api/usuarios</code></p>
+              <h3>Configuración del servidor backend</h3>
+              <p class="text-muted">URL base de los Servlets desplegados en Apache Tomcat</p>
             </div>
             <div class="endpoint-config">
-              <input type="text" id="api-base-url" value="http://localhost:8080/api-usuarios/api/usuarios" />
-              <button id="btn-sync-api" class="btn btn-navy btn-sm">Sincronizar GET</button>
+              <input type="text" id="api-base-url" value="http://localhost:8080/api-sena" aria-label="URL base de la API" />
+              <button id="btn-sync-api" class="btn btn-navy btn-sm">Sincronizar</button>
             </div>
           </div>
         </div>
 
         <div class="two-col-grid">
           <div class="card">
-            <h3>Registrar Usuario (<code>POST /api/usuarios</code>)</h3>
+            <h3>Registrar usuario</h3>
             <form id="form-usuario-api">
               <div class="form-group">
-                <label for="usr-nombre">Nombre Completo (<code>nombre</code>)</label>
-                <input type="text" id="usr-nombre" placeholder="Ej: Carlos Mendoza" required />
+                <label for="usr-nombre">Nombre completo</label>
+                <input type="text" id="usr-nombre" placeholder="Ej. Mariana Ríos" required />
               </div>
               <div class="form-group">
-                <label for="usr-email">Correo Electrónico (<code>email</code>)</label>
-                <input type="email" id="usr-email" placeholder="carlos@sena.edu.co" required />
+                <label for="usr-email">Correo electrónico</label>
+                <input type="email" id="usr-email" placeholder="mariana@sena.edu.co" required />
               </div>
               <div class="form-group">
-                <label for="usr-rol">Rol del Sistema (<code>rol</code>)</label>
+                <label for="usr-pass">Contraseña inicial</label>
+                <input type="password" id="usr-pass" value="123456" required />
+              </div>
+              <div class="form-group">
+                <label for="usr-rol">Rol</label>
                 <select id="usr-rol">
-                  <option value="ADMIN">ADMIN</option>
                   <option value="USER">USER</option>
-                  <option value="QA_ANALYST">QA_ANALYST</option>
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="QA_LEAD">QA_LEAD</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Enviar Petición POST</button>
+              <button type="submit" class="btn btn-primary btn-block">Guardar en MySQL</button>
               <div id="usr-feedback" class="alert hidden"></div>
             </form>
           </div>
 
           <div class="card">
-            <h3>Usuarios Registrados en <code>UsuarioDTO</code></h3>
+            <h3>Directorio de usuarios</h3>
             <div class="table-responsive">
               <table>
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>NOMBRE</th>
-                    <th>EMAIL</th>
-                    <th>ROL</th>
-                    <th>ACCIÓN (DELETE)</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                    <th class="text-right">Acción</th>
                   </tr>
                 </thead>
                 <tbody id="tabla-usuarios"></tbody>
               </table>
             </div>
+
             <div class="json-preview-box">
-              <strong>Última respuesta JSON del servicio:</strong>
-              <pre id="json-response-viewer">[{"id": 1, "nombre": "Administrador", "email": "admin@admin.com", "rol": "ADMIN"}]</pre>
+              <div class="json-preview-header">
+                <span>Respuesta JSON</span>
+                <code>GET /api/usuarios</code>
+              </div>
+              <pre id="json-response-viewer">[]</pre>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- VISTA 3: AUDITORÍA Y CALIDAD PSP -->
+      <!-- VISTA 3: CALIDAD Y PSP -->
       <section id="view-psp" class="view-section hidden">
         <div class="kpi-grid">
-          <div class="kpi-card border-green">
-            <span>CUMPLIMIENTO ISO/IEC 25010</span>
-            <strong>100%</strong>
+          <div class="kpi-card">
+            <span class="kpi-label">Norma de referencia</span>
+            <strong class="kpi-value">ISO 25010</strong>
           </div>
-          <div class="kpi-card border-navy">
-            <span>DEFECTOS RESUELTOS (JIRA)</span>
-            <strong>2 / 2</strong>
+          <div class="kpi-card">
+            <span class="kpi-label">Defectos cerrados</span>
+            <strong class="kpi-value text-green">2 / 2</strong>
           </div>
-          <div class="kpi-card border-amber">
-            <span>COBERTURA CASOS PRUEBA</span>
-            <strong>5 / 5 PASS</strong>
+          <div class="kpi-card">
+            <span class="kpi-label">Casos ejecutados</span>
+            <strong class="kpi-value">5 / 5</strong>
           </div>
-          <div class="kpi-card border-green">
-            <span>TIEMPO RESPUESTA UI</span>
-            <strong>&lt; 50 ms</strong>
+          <div class="kpi-card">
+            <span class="kpi-label">Persistencia</span>
+            <strong class="kpi-value">MySQL 8</strong>
           </div>
         </div>
 
         <div class="card">
-          <h3>Trazabilidad de Ajustes Técnicos y Calidad (GA11-220501098)</h3>
+          <h3>Trazabilidad de pruebas y ajustes técnicos</h3>
           <div class="table-responsive">
             <table>
               <thead>
                 <tr>
-                  <th>ID INCIDENCIA</th>
-                  <th>TIPO</th>
-                  <th>DESCRIPCIÓN DEL HALLAZGO</th>
-                  <th>AJUSTE TÉCNICO APLICADO</th>
-                  <th>ESTADO JIRA</th>
+                  <th>Código</th>
+                  <th>Tipo</th>
+                  <th>Hallazgo</th>
+                  <th>Solución aplicada</th>
+                  <th>Estado</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>CP-01</strong></td>
-                  <td>Caso Funcional</td>
-                  <td>Registro de solicitud válida con actualización de KPIs y log.</td>
-                  <td>Validación de flujo completo y persistencia local/API.</td>
-                  <td><span class="badge badge-approved">HECHO</span></td>
+                  <td class="mono">CP-01</td>
+                  <td>Funcional</td>
+                  <td>Registro de solicitud válida con actualización de métricas y bitácora.</td>
+                  <td>Integración directa con <code>POST /api/solicitudes</code> y recarga desde BD.</td>
+                  <td><span class="badge badge-approved">Completado</span></td>
                 </tr>
                 <tr>
-                  <td><strong>CP-02</strong></td>
-                  <td>Prueba Negativa</td>
-                  <td>Bloqueo de formulario con campos obligatorios vacíos.</td>
-                  <td>Validación preventiva antes de inserción y conteo de alertas.</td>
-                  <td><span class="badge badge-approved">HECHO</span></td>
+                  <td class="mono">CP-02</td>
+                  <td>Negativa</td>
+                  <td>Bloqueo de envío cuando faltan campos obligatorios.</td>
+                  <td>Validación en cliente y respuesta HTTP 400 en el Servlet.</td>
+                  <td><span class="badge badge-approved">Completado</span></td>
                 </tr>
                 <tr>
-                  <td><strong>BUG-01</strong></td>
-                  <td>Defecto (Alta)</td>
+                  <td class="mono">BUG-01</td>
+                  <td>Defecto</td>
                   <td>Duplicidad por diferencia entre mayúsculas y minúsculas.</td>
-                  <td>Normalización con <code>.trim().toLowerCase()</code>.</td>
-                  <td><span class="badge badge-approved">HECHO</span></td>
+                  <td>Normalización con <code>.trim().toLowerCase()</code> antes del registro.</td>
+                  <td><span class="badge badge-approved">Resuelto</span></td>
                 </tr>
                 <tr>
-                  <td><strong>BUG-02</strong></td>
-                  <td>Defecto (Media)</td>
-                  <td>Bloqueo indebido al reagendar solicitudes rechazadas.</td>
-                  <td>Filtro lógico <code>estado !== "RECHAZADA"</code>.</td>
-                  <td><span class="badge badge-approved">HECHO</span></td>
+                  <td class="mono">BUG-02</td>
+                  <td>Defecto</td>
+                  <td>Bloqueo al reagendar solicitudes previamente rechazadas.</td>
+                  <td>Exclusión lógica <code>estado !== "RECHAZADA"</code> en la validación.</td>
+                  <td><span class="badge badge-approved">Resuelto</span></td>
                 </tr>
                 <tr>
-                  <td><strong>CORS-01</strong></td>
-                  <td>Mejora API</td>
-                  <td>Bloqueo de peticiones cruzadas entre cliente web y Servlet.</td>
-                  <td>Cabeceras <code>Access-Control-Allow-Origin</code> y <code>doOptions</code>.</td>
-                  <td><span class="badge badge-approved">HECHO</span></td>
+                  <td class="mono">CORS-01</td>
+                  <td>Integración</td>
+                  <td>Bloqueo de peticiones cruzadas entre navegador y Tomcat.</td>
+                  <td>Filtro global <code>CorsFilter</code> aplicado a <code>/api/*</code>.</td>
+                  <td><span class="badge badge-approved">Resuelto</span></td>
                 </tr>
               </tbody>
             </table>
@@ -309,17 +313,17 @@
         </div>
       </section>
 
-      <!-- VISTA 4: REPORTES OPERATIVOS -->
+      <!-- VISTA 4: REPORTES -->
       <section id="view-reportes" class="view-section hidden">
         <div class="card">
           <div class="card-header-row">
             <div>
-              <h3>Consolidado Operativo del Sistema</h3>
-              <p class="text-muted">Exportación de datos para auditoría técnica y sustentación del proyecto formativo</p>
+              <h3>Resumen operativo</h3>
+              <p class="text-muted">Exportación de registros actuales para seguimiento y auditoría</p>
             </div>
             <div class="btn-group">
-              <button id="btn-export-json" class="btn btn-navy btn-sm">Descargar JSON</button>
-              <button id="btn-export-csv" class="btn btn-primary btn-sm">Exportar Excel (CSV)</button>
+              <button id="btn-export-json" class="btn btn-ghost btn-sm">Exportar JSON</button>
+              <button id="btn-export-csv" class="btn btn-primary btn-sm">Exportar CSV</button>
             </div>
           </div>
           <div id="reporte-resumen-grid" class="report-summary-box"></div>
